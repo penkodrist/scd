@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Electron App Template</title>
+    <link rel="stylesheet" href="./assets/default.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="appDiv">
+        <div class="titleBarWrapper">
+            <div class="windowName">
+                SCD
+            </div>
+            <div class="windowControls">
+                <div class="close"><img alt="close" src="./assets/icons/windowControlsIcons/close.png"></div>
+                <div class="minimize"><img alt="close" src="./assets/icons/windowControlsIcons/collapse.png"></div>
+            </div>
+        </div>
+        <div class="mainBody">
+            <div class="selectionScreen">
+                <div class="contents">
+                    <div class="box crypt">
+                        <div class="gradBg"></div>
+                        <div class="header">Шифровать</div>
+                        <div class="desc">Выберите один из методов шифрования ниже</div>
+                        <div class="methodsBtns">
+                            <div class="mBtn" data-method-index="0" data-process-type="crypt">Метод перестановки</div>
+                            <div class="mBtn" data-method-index="1" data-process-type="crypt">Шифр Цезаря</div>
+                            <div class="mBtn" data-method-index="2" data-process-type="crypt">Шифр на индексах Unicode</div>
+                        </div>
+                    </div>
+                    <div class="box decrypt">
+                        <div class="gradBg"></div>
+                        <div class="header">Расшифровать</div>
+                        <div class="desc">Выберите один из методов расшифровки ниже</div>
+                        <div class="methodsBtns">
+                            <div class="mBtn" data-method-index="0" data-process-type="decrypt">Метод перестановки</div>
+                            <div class="mBtn" data-method-index="1" data-process-type="decrypt">Шифр Цезаря</div>
+                            <div class="mBtn" data-method-index="2" data-process-type="decrypt">Шифр на индексах Unicode</div>
+                        </div>
+                    </div>
+                    <div class="box lang">
+                        <div class="header">Язык программы</div>
+                        <div class="langSwitchContainer">
+                            <div class="langBtn" data-lang="eng">Eng</div>
+                            <div class="langBtn toggled" data-lang="rus">Рус</div>
+                        </div>
+                        <div class="progVer">0.0.3_3_20102025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./assets/scripts/windowControls.js"></script>
+<script src="./assets/scripts/componentSwitcher.js"></script>
+</html>
