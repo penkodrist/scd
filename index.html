@@ -13,7 +13,7 @@
     <div class="appDiv">
         <div class="titleBarWrapper">
             <div class="windowName">
-                SCD
+                Simple Encrypt-Decrypt
             </div>
             <div class="windowControls">
                 <div class="close"><img alt="close" src="./assets/icons/windowControlsIcons/close.png"></div>
@@ -21,16 +21,15 @@
             </div>
         </div>
         <div class="mainBody">
-            <div class="selectionScreen">
+            <div class="component selectionScreen">
                 <div class="contents">
                     <div class="box crypt">
                         <div class="gradBg"></div>
                         <div class="header">Шифровать</div>
                         <div class="desc">Выберите один из методов шифрования ниже</div>
                         <div class="methodsBtns">
-                            <div class="mBtn" data-method-index="0" data-process-type="crypt">Метод перестановки</div>
-                            <div class="mBtn" data-method-index="1" data-process-type="crypt">Шифр Цезаря</div>
-                            <div class="mBtn" data-method-index="2" data-process-type="crypt">Шифр на индексах Unicode</div>
+                            <div class="mBtn" data-component-name="caesarCipher" data-process-type="crypt" data-test-target>Шифр Цезаря</div>
+                            <div class="mBtn" data-component-name="unicodeMod" data-process-type="crypt">Шифр на индексах Unicode</div>
                         </div>
                     </div>
                     <div class="box decrypt">
@@ -38,24 +37,202 @@
                         <div class="header">Расшифровать</div>
                         <div class="desc">Выберите один из методов расшифровки ниже</div>
                         <div class="methodsBtns">
-                            <div class="mBtn" data-method-index="0" data-process-type="decrypt">Метод перестановки</div>
-                            <div class="mBtn" data-method-index="1" data-process-type="decrypt">Шифр Цезаря</div>
-                            <div class="mBtn" data-method-index="2" data-process-type="decrypt">Шифр на индексах Unicode</div>
+                            <div class="mBtn" data-component-name="caesarCipher" data-process-type="decrypt">Шифр Цезаря</div>
+                            <div class="mBtn" data-component-name="unicodeMod" data-process-type="decrypt">Шифр на индексах Unicode</div>
                         </div>
                     </div>
                     <div class="box lang">
-                        <div class="header">Язык программы</div>
-                        <div class="langSwitchContainer">
-                            <div class="langBtn" data-lang="eng">Eng</div>
-                            <div class="langBtn toggled" data-lang="rus">Рус</div>
-                        </div>
-                        <div class="progVer">0.0.3_3_20102025</div>
+<!--                        <div class="header">Язык программы</div>-->
+<!--                        <div class="langSwitchContainer">-->
+<!--                            <div class="langBtn" data-lang="eng">Eng</div>-->
+<!--                            <div class="langBtn toggled" data-lang="rus">Рус</div>-->
+<!--                        </div>-->
+                        <div class="progVer">0.0.4_4_221025</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<div class="componentsStorage">
+
+    <div class="component selectionScreen">
+        <div class="contents">
+            <div class="box crypt">
+                <div class="gradBg"></div>
+                <div class="header">Шифровать</div>
+                <div class="desc">Выберите один из методов шифрования ниже</div>
+                <div class="methodsBtns">
+                    <div class="mBtn" data-component-name="caesarCipher" data-process-type="crypt">Шифр Цезаря</div>
+                    <div class="mBtn" data-component-name="unicodeMod" data-process-type="crypt">Шифр на индексах Unicode</div>
+                </div>
+            </div>
+            <div class="box decrypt">
+                <div class="gradBg"></div>
+                <div class="header">Расшифровать</div>
+                <div class="desc">Выберите один из методов расшифровки ниже</div>
+                <div class="methodsBtns">
+                    <div class="mBtn" data-component-name="caesarCipher" data-process-type="decrypt">Шифр Цезаря</div>
+                    <div class="mBtn" data-component-name="unicodeMod" data-process-type="decrypt">Шифр на индексах Unicode</div>
+                </div>
+            </div>
+            <div class="box lang">
+<!--                <div class="header">Язык программы</div>-->
+<!--                <div class="langSwitchContainer">-->
+<!--                    <div class="langBtn" data-lang="eng">Eng</div>-->
+<!--                    <div class="langBtn toggled" data-lang="rus">Рус</div>-->
+<!--                </div>-->
+                <div class="progVer">0.0.4_4_221025</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="component caesarCipher crypt">
+        <div class="contents">
+            <div class="componentHeader">
+                <div class="backBtn" data-component-name="selectionScreen">< Вернуться на главную</div>
+                <div class="componentName">
+                    Шифр Цезаря
+                    <span>Шифрование</span>
+                </div>
+            </div>
+            <div class="inputDataContainer">
+                <div class="inputFieldContainer">
+                    <span>Передаваемое сообщение</span>
+                    <label>
+                        <input type="text" data-public-text>
+                    </label>
+                </div>
+                <div class="inputFieldContainer">
+                    <span>Ключ</span>
+                    <label>
+                        <input type="text" data-private-key>
+                    </label>
+                </div>
+                <div class="msgManBtn">
+                    Шифровать
+                </div>
+                <div class="outputBox">
+                    <div class="output"></div>
+                    <span class="outputLabel">Вывод</span>
+                    <span class="outputCopyBtn">Копировать результат</span>
+                </div>
+            </div>
+            <div class="gradBg"></div>
+        </div>
+    </div>
+
+    <div class="component caesarCipher decrypt">
+        <div class="contents">
+            <div class="componentHeader">
+                <div class="backBtn" data-component-name="selectionScreen">< Вернуться на главную</div>
+                <div class="componentName">
+                    Шифр Цезаря
+                    <span>Расшифровка</span>
+                </div>
+            </div>
+            <div class="inputDataContainer">
+                <div class="inputFieldContainer">
+                    <span>Полученное сообщение</span>
+                    <label>
+                        <input type="text" data-public-text>
+                    </label>
+                </div>
+                <div class="inputFieldContainer">
+                    <span>Ключ</span>
+                    <label>
+                        <input type="text" data-private-key>
+                    </label>
+                </div>
+                <div class="msgManBtn">
+                    Расшифровать
+                </div>
+                <div class="outputBox">
+                    <div class="output"></div>
+                    <span class="outputLabel">Вывод</span>
+                    <span class="outputCopyBtn">Копировать результат</span>
+                </div>
+            </div>
+            <div class="gradBg"></div>
+        </div>
+    </div>
+
+    <div class="component unicodeMod crypt">
+        <div class="contents">
+            <div class="componentHeader">
+                <div class="backBtn" data-component-name="selectionScreen">< Вернуться на главную</div>
+                <div class="componentName">
+                    Шифр на индексах Unicode
+                    <span>Шифрование</span>
+                </div>
+            </div>
+            <div class="inputDataContainer">
+                <div class="inputFieldContainer">
+                    <span>Передаваемое сообщение</span>
+                    <label>
+                        <input type="text" data-public-text>
+                    </label>
+                </div>
+                <div class="inputFieldContainer">
+                    <span>Ключ</span>
+                    <label>
+                        <input type="text" data-private-key>
+                    </label>
+                </div>
+                <div class="msgManBtn">
+                    Шифровать
+                </div>
+                <div class="outputBox">
+                    <div class="output"></div>
+                    <span class="outputLabel">Вывод</span>
+                    <span class="outputCopyBtn">Копировать результат</span>
+                </div>
+            </div>
+            <div class="gradBg"></div>
+        </div>
+    </div>
+
+    <div class="component unicodeMod decrypt">
+        <div class="contents">
+            <div class="componentHeader">
+                <div class="backBtn" data-component-name="selectionScreen">< Вернуться на главную</div>
+                <div class="componentName">
+                    Шифр на индексах Unicode
+                    <span>Расшифровка</span>
+                </div>
+            </div>
+            <div class="inputDataContainer">
+                <div class="inputFieldContainer">
+                    <span>Полученное сообщение</span>
+                    <label>
+                        <input type="text" data-public-text>
+                    </label>
+                </div>
+                <div class="inputFieldContainer">
+                    <span>Ключ</span>
+                    <label>
+                        <input type="text" data-private-key>
+                    </label>
+                </div>
+                <div class="msgManBtn">
+                    Расшифровать
+                </div>
+                <div class="outputBox">
+                    <div class="output"></div>
+                    <span class="outputLabel">Вывод</span>
+                    <span class="outputCopyBtn">Копировать результат</span>
+                </div>
+            </div>
+            <div class="gradBg"></div>
+        </div>
+    </div>
+</div>
 </body>
+<script async>
+    setTimeout(() => {
+        document.querySelector('[data-test-target]').dispatchEvent(new MouseEvent('click'))
+    }, 100)
+</script>
 <script src="./assets/scripts/windowControls.js"></script>
 <script src="./assets/scripts/componentSwitcher.js"></script>
+<script src="./assets/scripts/manData.js"></script>
 </html>

@@ -5,12 +5,20 @@
     --muted-text: #888888;
     --default-text: #fff;
     --accent-1: #1AB3A1;
+    --accent-1-hover: #17998a;
     --accent-2: #FF0000;
+    --accent-2-hover: #e60000;
     --btn-bg: rgba(0 0 0 / 0.5);
     --btn-bg-hover: rgba(30 30 30 / 0.5);
     --lang-bg-default: #000;
     --lang-bg-hover: #121212;
-    --lang-bg-toggled: #00B51B
+    --lang-bg-toggled: #00B51B;
+    --back-btn-static: #00c8ff;
+    --back-btn-hover: #00a5d3;
+    --process-type-hint: rgba(0 0 0 / 0.5);
+    --input-field-bg: rgba(0 0 0 / 0.5);
+    --output-msg-bg: rgba(0 0 0 / 0.5);
+    --global-anim-curve: cubic-bezier(.78,.07,.36,.98)
 }
 
 ::-webkit-scrollbar {
@@ -24,7 +32,7 @@ html, body {
 }
 
 * {
-    font-family: Inter, sans-serif;
+    font-family: Onest, sans-serif;
     user-select: none;
     color: var(--default-text)
 }
@@ -48,7 +56,7 @@ html, body {
             display: flex;
             width: calc(100% - 80px);
             align-items: center;
-            justify-content: center;
+            /*justify-content: center;*/
             font-size: 0.8rem;
             padding: 10px;
             box-sizing: border-box;
@@ -104,6 +112,8 @@ html, body {
         width: 100%;
         height: 100%;
         overflow: hidden;
+        box-sizing: border-box;
+        padding: 40px;
         .selectionScreen {
             display: flex;
             flex-direction: row;
@@ -113,15 +123,201 @@ html, body {
             max-height: 500px;
             width: 100%;
             height: 100%;
+        }
+        .caesarCipher, .unicodeMod {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        .caesarCipher.crypt, .unicodeMod.crypt {
+            .gradBg {
+                background-color: var(--accent-1);
+            }
+            .msgManBtn {
+                background-color: var(--accent-1);
+            }
+            .msgManBtn:hover {
+                background-color: var(--accent-1-hover);
+            }
+        }
+        .caesarCipher.decrypt,  .unicodeMod.decrypt {
+            .gradBg {
+                background-color: var(--accent-2);
+            }
+            .msgManBtn {
+                background-color: var(--accent-2);
+            }
+            .msgManBtn:hover {
+                background-color: var(--accent-2-hover);
+            }
+        }
+        .component {
+            transition-duration: .25s, .35s;
+            transition-timing-function: ease, cubic-bezier(.18,.76,.01,1.11);
+            transition-property: transform, opacity;
+            transform: translateX(0);
+            opacity: 1;
             .contents {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: row;
+                justify-content: inherit;
+                align-items: inherit;
+                flex-direction: inherit;
                 gap: 20px;
-                max-height: 390px;
                 width: 100%;
                 height: 100%;
+                .componentHeader {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: row;
+                    position: relative;
+                    width: 100%;
+                    height: min-content;
+                    margin-bottom: 20px;
+                    .componentName {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 10px;
+                        font-size: 20px;
+                        font-weight: 700;
+                        span {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: var(--process-type-hint);
+                            font-size: 14px;
+                            font-weight: 400;
+                            border-radius: 8px;
+                            height: 35px;
+                            padding: 0 7px;
+                            box-sizing: border-box;
+                        }
+                    }
+                    .backBtn {
+                        position: absolute;
+                        left: 0;
+                        color: var(--back-btn-static);
+                        cursor: pointer;
+                        transition: .15s ease;
+                    }
+                    .backBtn:hover {
+                        color: var(--back-btn-hover)
+                    }
+                    .backBtn:active {
+                        transform: scale(0.97);
+                    }
+                }
+                .inputDataContainer {
+                    width: 100%;
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    height: fit-content;
+                    .inputFieldContainer {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                        width: 100%;
+                        span {
+                            margin-left: 7px;
+                            font-size: 14px;
+                        }
+                        label {
+                            width: 100%;
+                            height: 40px;
+                            input {
+                                background-color: var(--input-field-bg);
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 7px;
+                                outline: none;
+                                border: none;
+                                box-sizing: border-box;
+                                padding: 0 13px;
+                            }
+                        }
+                    }
+                    .msgManBtn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 7px;
+                        font-size: 14px;
+                        font-weight: 700;
+                        height: 40px;
+                        min-height: 40px;
+                        padding: 0 15px;
+                        margin-left: auto;
+                        cursor: pointer;
+                        transition: .15s ease;
+                    }
+                    .msgManBtn:active {
+                        transform: scale(0.97);
+                    }
+                    .outputBox {
+                        display: flex;
+                        box-sizing: border-box;
+                        padding: 15px;
+                        max-height: 250px;
+                        height: 100%;
+                        overflow-y: auto;
+                        position: relative;
+                        background-color: var(--output-msg-bg);
+                        border-radius: 7px;
+                        .output {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            box-sizing: border-box;
+                            padding: 15px;
+                        }
+                        .outputLabel {
+                            position: absolute;
+                            top: 15px;
+                            right: 15px;
+                            font-size: 14px;
+                            font-weight: 700;
+                            color: var(--muted-text);
+                            pointer-events: none;
+                            z-index: 3;
+                        }
+                        .outputCopyBtn {
+                            position: absolute;
+                            bottom: 15px;
+                            right: 15px;
+                            font-size: 14px;
+                            font-weight: 700;
+                            color: var(--muted-text);
+                            cursor: pointer;
+                            transition: .15s ease;
+                            z-index: 3;
+                        }
+                        .outputCopyBtn:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+                .gradBg {
+                    position: absolute;
+                    width: 500px;
+                    aspect-ratio: 1 / 1;
+                    border-radius: 500px;
+                    bottom: calc(0px - 40px - 250px);
+                    filter: blur(100px);
+                    z-index: 1;
+                    pointer-events: none;
+                }
+                .inputDataContainer, .componentHeader {
+                    z-index: 2;
+                }
+                /* selectionScreen */
                 .box {
                     display: flex;
                     background-color: var(--box-bg);
@@ -236,5 +432,12 @@ html, body {
                 }
             }
         }
+    }
+}
+.componentsStorage {
+    display: none;
+    .component {
+        transform: translateX(+30px);
+        opacity: 0;
     }
 }
